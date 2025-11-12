@@ -12,14 +12,14 @@ function Hero() {
         </h1>
         <p className="mt-10 text-center text-lg leading-9 md:text-start">
           Track your spending, set savings goals, and plan for the future—all in
-          one place. Our intuitive personal finance tracker helps you manage
+          one place. Our intuitive personal expense tracker helps you manage
           your money with ease, so you can make smarter financial decisions and
           achieve your goals faster.
         </p>
         <div className="mt-5 flex justify-center sm:justify-start">
           <ButtonLink
-            label="Login"
-            href="/auth/login"
+            label="Sign up"
+            href="/auth/sign-up"
             size="md"
             variant="primaryBlue"
             customClasses="w-36 text-center text-base font-medium tracking-wider"
@@ -32,7 +32,7 @@ function Hero() {
           src="/hero.svg"
           width={750}
           height={45}
-          alt="radiantways_logo"
+          alt="hero image"
           style={{ width: 'full', height: 'auto' }}
           priority
         />
