@@ -11,7 +11,7 @@ import {
 import Footer from '@/components/home/Footer';
 import Header from '@/components/home/Header';
 
-export const features = [
+const features = [
   {
     icon: IconReportMoney,
     title: 'Track Expenses',
