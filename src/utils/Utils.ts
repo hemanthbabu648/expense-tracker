@@ -154,8 +154,8 @@ export const getCategories = {
       value: 'PERSONAL_LOAN',
     },
     {
-      label: "EMI",
-      value: "EMI",
+      label: 'EMI',
+      value: 'EMI',
     },
     {
       label: 'Other',
@@ -169,8 +169,8 @@ export const getCategories = {
       value: 'IN_EXCHANGE',
     },
     {
-      label: "EMI",
-      value: "EMI",
+      label: 'EMI',
+      value: 'EMI',
     },
     {
       label: 'Other',
