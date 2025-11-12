@@ -37,7 +37,7 @@ const BorrowTransactionForm = () => {
   const [tab, setTab] = useState<BorrowTabValues>('TAKEN');
   const [loading, setLoading] = useState(false);
 
-  const category = getCategories["BORROW"];
+  const category = getCategories['BORROW'];
 
   const getMappedAccounts = () => {
     return userAccounts?.map((account) => {

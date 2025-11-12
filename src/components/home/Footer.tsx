@@ -34,7 +34,7 @@ const SOCIAL_MEDIA: SocialMedia[] = [
     url: 'https://www.linkedin.com/in/hemanthbabu648',
     icon: <IconBrandLinkedin size={18} stroke={1.5} />,
   },
-]
+];
 
 const Footer = () => {
   const handleSocialClick = (url: string) => {

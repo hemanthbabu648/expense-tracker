@@ -1,8 +1,6 @@
 'use client';
 
-import {
-  Burger,
-} from '@mantine/core';
+import { Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,10 +17,7 @@ const Header = () => {
       <nav className="mx-auto flex w-full items-center justify-between px-4 sm:max-w-7xl">
         {/* Brand Logo */}
         <div className="flex items-center gap-4 md:gap-20">
-          <Link
-            href="/"
-            className="flex items-center gap-2"
-          >
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src={URLS.BRAND.url}
               width={50}
@@ -39,7 +34,10 @@ const Header = () => {
         <div className="hidden sm:block">
           <ul className="flex list-none gap-x-2 text-base font-normal lg:gap-x-5">
             {URLS.HOME.map((url) => (
-              <li key={url.name} className="cursor-pointer rounded-md px-4 py-2 hover:bg-gray-100">
+              <li
+                key={url.name}
+                className="cursor-pointer rounded-md px-4 py-2 hover:bg-gray-100"
+              >
                 <Link href={url.path}>{url.name}</Link>
               </li>
             ))}
@@ -54,7 +52,7 @@ const Header = () => {
           />
         </div>
         {/* Auth Buttons: from sm device onwards */}
-        <div className="hidden sm:flex gap-2">
+        <div className="hidden gap-2 sm:flex">
           <ButtonLink
             label="Sign in"
             href="/auth/sign-in"
@@ -75,7 +73,10 @@ const Header = () => {
           <div className="flex flex-col items-center">
             <ul className="flex list-none flex-col items-center gap-y-4 text-base font-normal">
               {URLS.HOME.map((url) => (
-                <li key={url.name} className="cursor-pointer rounded-md px-4 py-2 hover:bg-gray-100">
+                <li
+                  key={url.name}
+                  className="cursor-pointer rounded-md px-4 py-2 hover:bg-gray-100"
+                >
                   <Link href={url.path}>{url.name}</Link>
                 </li>
               ))}

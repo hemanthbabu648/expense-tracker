@@ -17,8 +17,6 @@ import NumberInput from '../commons/NumberInput';
 import Select from '../commons/Select';
 import TextInput from '../commons/TextInput';
 
-
-
 const CreateAccountForm = () => {
   const dispatch = useAppDispatch();
   const { userDetails } = useSelector((state: RootState) => state.auth);

@@ -31,15 +31,27 @@ export default function RootLayout({
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Finomic" />
         <meta property="og:description" content="Finance Made Simple" />
-        <meta property="og:image" content="https://www.hemanthbabu648.com/logo.svg" />
-        <meta property="og:url" content="https://www.expenses.hemanthbabu648.com" />
+        <meta
+          property="og:image"
+          content="https://www.hemanthbabu648.com/logo.svg"
+        />
+        <meta
+          property="og:url"
+          content="https://www.expenses.hemanthbabu648.com"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Finomic" />
         <meta name="twitter:description" content="Finance Made Simple" />
-        <meta name="twitter:image" content="https://www.hemanthbabu648.com/logo.svg" />
+        <meta
+          name="twitter:image"
+          content="https://www.hemanthbabu648.com/logo.svg"
+        />
         <title>Finomic | Finance Made Simple</title>
         <link rel="icon" href="https://www.hemanthbabu648.com/logo.svg" />
-        <link rel="apple-touch-icon" href="https://www.hemanthbabu648.com/logo.svg" />
+        <link
+          rel="apple-touch-icon"
+          href="https://www.hemanthbabu648.com/logo.svg"
+        />
         <ColorSchemeScript />
       </head>
       <body className={`${inter.className} antialiased`}>

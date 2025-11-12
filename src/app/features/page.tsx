@@ -11,8 +11,6 @@ import {
 import Footer from '@/components/home/Footer';
 import Header from '@/components/home/Header';
 
-
-
 export const features = [
   {
     icon: IconReportMoney,
@@ -45,7 +43,6 @@ export const features = [
     description: 'Personalize your finance overview.',
   },
 ];
-
 
 const renderFeatures = features.map((feature) => (
   <div key={feature.title}>
