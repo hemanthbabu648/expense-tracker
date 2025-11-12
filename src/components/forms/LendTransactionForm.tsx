@@ -38,7 +38,7 @@ const LendTransactionForm = () => {
   const [tab, setTab] = useState<LendTabValues>('GIVEN');
   const [loading, setLoading] = useState(false);
 
-  const category = getCategories["LEND"];
+  const category = getCategories['LEND'];
 
   const getMappedAccounts = () => {
     return userAccounts?.map((account) => {
