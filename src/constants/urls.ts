@@ -35,6 +35,10 @@ const URLS = {
     url: PORTFOLIO.url,
     name: PORTFOLIO.name,
   },
+  AUTH: {
+    SIGN_IN: '/auth/sign-in',
+    SIGN_UP: '/auth/sign-up',
+  },
 };
 
 export default URLS;

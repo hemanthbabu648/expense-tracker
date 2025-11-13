@@ -55,13 +55,13 @@ const Header = () => {
         <div className="hidden gap-2 sm:flex">
           <ButtonLink
             label="Sign in"
-            href="/auth/sign-in"
+            href={URLS.AUTH.SIGN_IN}
             size="md"
             variant="outline-primary"
           />
           <ButtonLink
             label="Sign up"
-            href="/auth/sign-up"
+            href={URLS.AUTH.SIGN_UP}
             size="md"
             variant="primaryBlue"
           />
