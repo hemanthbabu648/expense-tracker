@@ -2,7 +2,9 @@ import { IconLogout } from '@tabler/icons-react';
 import Link from 'next/link';
 import React from 'react';
 
-import LoginForm from '@/components/forms/LoginForm';
+import LoginForm from '@/containers/auth/LoginForm';
+
+import URLS from '../../../constants/urls';
 
 function LoginPage() {
   return (
@@ -19,10 +21,10 @@ function LoginPage() {
         <p className="mt-2 text-center text-sm text-gray-500 sm:text-base">
           Do not have an account yet?{' '}
           <Link
-            href="/auth/register"
+            href={URLS.AUTH.SIGN_UP}
             className="text-sm text-primary-light hover:underline sm:text-base"
           >
-            Create account
+            Sign up
           </Link>
         </p>
         <LoginForm />

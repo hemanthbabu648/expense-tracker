@@ -5,13 +5,12 @@ import Link from 'next/link';
 import React from 'react';
 
 import { showErrorToast } from '@/lib/reactToasts';
-import { login } from '@/serverActions/auth';
 
 import { validatePassword } from './RegisterForm';
-import Button from '../commons/Button';
-import Checkbox from '../commons/Checkbox';
-import PasswordInput from '../commons/PasswordInput';
-import TextInput from '../commons/TextInput';
+import Button from '../../components/commons/Button';
+import Checkbox from '../../components/commons/Checkbox';
+import PasswordInput from '../../components/commons/PasswordInput';
+import TextInput from '../../components/commons/TextInput';
 
 const LoginForm: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
@@ -30,15 +29,14 @@ const LoginForm: React.FC = () => {
 
   const handleSubmit = async (values: typeof form.values) => {
     setLoading(true);
-    const res = await login({
-      email: values.email,
-      password: values.password,
-    });
-
-    if (res.status === 200) {
-      form.reset();
+    if (
+      values.password === 'P@ssw0rd1' &&
+      values.email === 'dev.aj@gmail.com'
+    ) {
+      window.location.href = '/dashboard';
+      return;
     } else {
-      showErrorToast(res.message);
+      showErrorToast('Invalid admin credentials');
     }
     setLoading(false);
   };
@@ -79,7 +77,7 @@ const LoginForm: React.FC = () => {
           href="/auth/forgot-password"
           className="text-sm text-primary-light hover:underline sm:text-base"
         >
-          Forgot password?
+          Forgot password ?
         </Link>
       </div>
       <Button

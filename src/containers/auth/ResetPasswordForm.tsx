@@ -5,11 +5,10 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 
+import Button from '@/components/commons/Button';
+import PasswordInput from '@/components/commons/PasswordInput';
 import { showErrorToast } from '@/lib/reactToasts';
 import { resetPassword } from '@/serverActions/auth';
-
-import Button from '../commons/Button';
-import PasswordInput from '../commons/PasswordInput';
 
 const ResetPasswordForm: React.FC = () => {
   const searchParams = useSearchParams();
