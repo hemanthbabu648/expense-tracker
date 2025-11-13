@@ -7,8 +7,9 @@ import React from 'react';
 import { showErrorToast, showSuccessToast } from '@/lib/reactToasts';
 import { forgotPassword } from '@/serverActions/auth';
 
-import Button from '../commons/Button';
-import TextInput from '../commons/TextInput';
+import Button from '../../components/commons/Button';
+import TextInput from '../../components/commons/TextInput';
+import URLS from '../../constants/urls';
 
 const ForgotPasswordForm: React.FC = () => {
   const form = useForm({
@@ -50,10 +51,10 @@ const ForgotPasswordForm: React.FC = () => {
 
       <div className="flex items-center justify-between">
         <Link
-          href="/auth/login"
+          href={URLS.AUTH.SIGN_IN}
           className="text-sm text-primary-light hover:underline sm:text-base"
         >
-          Back to login
+          Back to sign in
         </Link>
         <Button type="submit">Confirm</Button>
       </div>

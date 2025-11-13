@@ -10,11 +10,12 @@ import React from 'react';
 import { showErrorToast, showSuccessToast } from '@/lib/reactToasts';
 import { signup } from '@/serverActions/auth';
 
-import Button from '../commons/Button';
-import Checkbox from '../commons/Checkbox';
-import Modal from '../commons/Modal';
-import PasswordInput from '../commons/PasswordInput';
-import TextInput from '../commons/TextInput';
+import Button from '../../components/commons/Button';
+import Checkbox from '../../components/commons/Checkbox';
+import Modal from '../../components/commons/Modal';
+import PasswordInput from '../../components/commons/PasswordInput';
+import TextInput from '../../components/commons/TextInput';
+import URLS from '../../constants/urls';
 
 const requirements = [
   { re: /[0-9]/, label: 'Includes number' },
@@ -230,11 +231,17 @@ const RegisterForm: React.FC = () => {
             description={
               <span className="!text-gray">
                 By checking this box, I agree to the{' '}
-                <Link href="/privary" className="text-navy-blue-300 underline">
+                <Link
+                  href="/terms-and-conditions"
+                  className="text-navy-blue-300 underline"
+                >
                   Terms of Service
                 </Link>{' '}
                 and{' '}
-                <Link href="/privary" className="text-navy-blue-300 underline">
+                <Link
+                  href="/privary-policy"
+                  className="text-navy-blue-300 underline"
+                >
                   Privacy Policy
                 </Link>
                 .
@@ -251,11 +258,10 @@ const RegisterForm: React.FC = () => {
             description={
               <span className="!text-gray">
                 By checking this box, I consent by electronic signature to
-                receive emails from Finomic [Radiant Ways], LLC and its
-                affiliates made by any means or technology for informational, at
-                the email I provided above. I understand that my consent to such
-                emails is not required to use the services of Finomic [Radiant
-                Ways], LLC.
+                receive emails from Finomic LLC and its affiliates made by any
+                means or technology for informational, at the email I provided
+                above. I understand that my consent to such emails is not
+                required to use the services of Finomic LLC.
               </span>
             }
             variant="filled"
@@ -266,10 +272,10 @@ const RegisterForm: React.FC = () => {
         <p className="mt-2 text-sm text-gray-500 sm:text-base">
           Already have an account?{' '}
           <Link
-            href="/auth/login"
+            href={URLS.AUTH.SIGN_IN}
             className="text-sm text-primary-light hover:underline sm:text-base"
           >
-            Login
+            Sign in
           </Link>
         </p>
         <div className="mt-5">
@@ -281,7 +287,7 @@ const RegisterForm: React.FC = () => {
             type="submit"
             loading={loading}
           >
-            Register
+            Sign Up
           </Button>
         </div>
       </form>
