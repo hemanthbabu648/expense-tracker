@@ -2,16 +2,16 @@
 
 import { UnstyledButton } from '@mantine/core';
 import {
-  IconBrandRevolut,
-  IconLayoutSidebarFilled,
-  IconLayoutSidebarRightFilled,
+  IconCircleDottedLetterF,
+  IconLayoutSidebarLeftExpand,
+  IconLayoutSidebarLeftCollapse,
 } from '@tabler/icons-react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import MobileMenu from '@/components/MobileMenu';
-import UserInfoMenu from '@/components/UserInfoMenu';
-import UserSidebar from '@/components/users/UserSidebar';
+import MobileMenu from '@/components/layout/MobileMenu';
+import UserInfoMenu from '@/components/layout/UserInfoMenu';
+import UserSidebar from '@/components/layout/UserSidebar';
 import { useAppSelector } from '@/redux/hooks';
 import { fetchUserAccounts } from '@/redux/slices/AccountSlice';
 import { fetchUserDetails } from '@/redux/slices/UserSlice';
@@ -47,13 +47,13 @@ export default function DashboardLayout({
         >
           {/* Brand Logo And Name */}
           <div
-            className={`flex ${isSidebarOpen ? 'justify-between' : 'justify-center'} items-center border-b border-gray-600 p-1`}
+            className={`flex ${isSidebarOpen ? 'justify-between' : 'justify-center py-3'} items-center border-b border-gray-600 p-1`}
           >
             {isSidebarOpen && (
               <div className="flex items-center gap-2">
-                <IconBrandRevolut size={40} />
+                <IconCircleDottedLetterF size={40} />
                 <div>
-                  <p className="whitespace-nowrap text-sm">Finomic</p>
+                  <p className="whitespace-nowrap text-xl font-bold">Finomic</p>
                   <p className="whitespace-nowrap text-xs">
                     Finance Made Simple
                   </p>
@@ -62,9 +62,9 @@ export default function DashboardLayout({
             )}
             <UnstyledButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
               {isSidebarOpen ? (
-                <IconLayoutSidebarRightFilled size={28} />
+                <IconLayoutSidebarLeftCollapse size={28} />
               ) : (
-                <IconLayoutSidebarFilled size={28} />
+                <IconLayoutSidebarLeftExpand size={28} />
               )}
             </UnstyledButton>
           </div>
