@@ -1,13 +1,16 @@
 import { Tooltip } from '@mantine/core';
 import {
-  IconBuildingBank,
-  IconCashBanknoteOff,
-  IconContract,
+  IconWallet,
+  IconChartPie,
+  IconExchange,
+  IconCreditCard,
   IconDashboard,
-  IconReceiptDollar,
+  IconReport,
   IconReportAnalytics,
-  IconTransactionRupee,
+  IconFileDescription,
+  IconCalendarTime,
 } from '@tabler/icons-react';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
 import NavLink from '../commons/NavLink';
@@ -15,28 +18,38 @@ import NavLink from '../commons/NavLink';
 const userRoutes = [
   {
     link: '/dashboard',
-    label: 'Home',
+    label: 'Dashboard',
     icon: IconDashboard,
   },
   {
-    link: '/dashboard/accounts',
-    label: 'Accounts',
-    icon: IconBuildingBank,
+    link: '/dashboard/bank-accounts',
+    label: 'Bank Accounts',
+    icon: IconWallet,
+  },
+  {
+    link: '/dashboard/credit-cards',
+    label: 'Credit Cards',
+    icon: IconCreditCard,
   },
   {
     link: '/dashboard/transactions',
     label: 'Transactions',
-    icon: IconTransactionRupee,
+    icon: IconFileDescription,
   },
   {
-    link: '/dashboard/borrow-lend',
-    label: 'Borrow / Lend',
-    icon: IconContract,
+    link: '/dashboard/p2p-transactions',
+    label: 'P2P Transactions',
+    icon: IconExchange,
+  },
+  {
+    link: '/dashboard/emis',
+    label: 'EMIs',
+    icon: IconCalendarTime,
   },
   {
     link: '/dashboard/budgets',
     label: 'Budgets',
-    icon: IconCashBanknoteOff,
+    icon: IconChartPie,
   },
   {
     link: '/dashboard/analytics',
@@ -44,9 +57,9 @@ const userRoutes = [
     icon: IconReportAnalytics,
   },
   {
-    link: '/dashboard/bills',
-    label: 'Bills',
-    icon: IconReceiptDollar,
+    link: '/dashboard/reports',
+    label: 'Reports',
+    icon: IconReport,
   },
 ];
 
@@ -55,9 +68,11 @@ type Props = {
 };
 
 const UserSidebar: React.FC<Props> = ({ isSidebarOpen }) => {
+  const pathname = usePathname();
+
   if (!isSidebarOpen) {
     return (
-      <div className="flex flex-col px-1 py-2">
+      <div className="flex flex-col px-2 py-2">
         {userRoutes.map((route) => (
           <Tooltip
             key={route.link}
@@ -78,15 +93,19 @@ const UserSidebar: React.FC<Props> = ({ isSidebarOpen }) => {
 
   return (
     <div className="flex flex-col px-1 py-2">
-      {userRoutes.map((route) => (
-        <NavLink
-          href={route.link}
-          key={route.link}
-          label={route.label}
-          leftSection={<route.icon />}
-          className="mt-1 !rounded-sm hover:!bg-primary-blue-light"
-        />
-      ))}
+      {userRoutes.map((route) => {
+        const isActive = pathname === route.link;
+        return (
+          <NavLink
+            href={route.link}
+            key={route.link}
+            label={route.label}
+            leftSection={<route.icon />}
+            className={`mt-1 !rounded-sm ${isActive ? '' : 'hover:!bg-gray-500'}`}
+            active={isActive}
+          />
+        );
+      })}
     </div>
   );
 };

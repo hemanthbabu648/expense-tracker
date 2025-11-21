@@ -14,8 +14,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { logout } from '@/serverActions/auth';
 
-import Avatar from './commons/Avatar';
-import SwitchInput from './commons/SwitchInput';
+import Avatar from '../commons/Avatar';
+import SwitchInput from '../commons/SwitchInput';
 
 type UserInfoMenuProps = {
   openSidebar: boolean;
@@ -71,7 +71,7 @@ const UserInfoMenu: React.FC<UserInfoMenuProps> = ({ openSidebar }) => {
           className="!text-white hover:!bg-primary-blue-light hover:!text-white"
           leftSection={<IconUser className="h-4 w-4" />}
         >
-          <Link href="/dashboard/profile">Profile</Link>
+          <Link href="/dashboard/user/profile">Profile</Link>
         </Menu.Item>
         <Menu.Item
           className="!text-white hover:!bg-primary-blue-light hover:!text-white"
@@ -85,7 +85,7 @@ const UserInfoMenu: React.FC<UserInfoMenuProps> = ({ openSidebar }) => {
           className="!text-white hover:!bg-primary-blue-light hover:!text-white"
           leftSection={<IconSettings className="h-4 w-4" />}
         >
-          <Link href="/dashboard/settings">Settings</Link>
+          <Link href="/dashboard/user/account/settings">Settings</Link>
         </Menu.Item>
         <Menu.Divider className="!bg-gray-400" />
         <Menu.Item
