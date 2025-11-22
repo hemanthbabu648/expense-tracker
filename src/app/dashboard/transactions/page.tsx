@@ -1,21 +1,16 @@
 'use client';
 
 import { useDisclosure } from '@mantine/hooks';
-import {
-  IconCreditCard,
-  IconMoneybag,
-  IconPigMoney,
-  IconPlus,
-  IconWallet,
-} from '@tabler/icons-react';
 import { ColumnDef } from '@tanstack/react-table';
-import React from 'react';
+import React, { useState } from 'react';
 
-import StatsCard from '@/components/cards/StatsCard';
-import Button from '@/components/commons/Button';
 import Drawer from '@/components/commons/Drawer';
-import AddTransactionForm from '@/components/forms/AddTransactionForm';
-import BasicTable from '@/components/tables/BaseTable';
+import { PeriodOption } from '@/components/shared/Filter';
+import PageHeader from '@/components/shared/PageHeader';
+import BasicTable from '@/components/table/BaseTable';
+import TableActions from '@/components/table/TableActions';
+import AddTransactionForm from '@/containers/transactions/AddTransactionForm';
+import TransactionSnapshotCard from '@/containers/transactions/TransactionSnapshotCard';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import {
   fetchAllTransactions,
@@ -29,58 +24,23 @@ import { getAccountDetails } from '@/utils/Utils';
 function TransactionsPage() {
   const dispatch = useAppDispatch();
   const userId = useAppSelector(useAuthUserId);
+
+  // Redux data
   const allTransactions = useAppSelector(
     (state) => state.transaction.allTransactions,
   );
   const loading = useAppSelector((state) => state.transaction.loading);
   const allAccounts = useAppSelector((state) => state.account.userAccounts);
-  const statsLoading = useAppSelector(
-    (state) => state.transaction.statsLoading,
-  );
-  const transactionStats = useAppSelector(
-    (state) => state.transaction.transactionStats,
-  );
-  const currentMonthOverView = transactionStats?.currentMonthOverView;
 
   const [opened, { open, close }] = useDisclosure(false);
 
-  const statsData = [
-    {
-      title: 'Balance',
-      value: `₹${currentMonthOverView?.remaining.toFixed(2)}`,
-      description: 'Current Month Remaining',
-      icon: <IconWallet className="h-6 w-6 text-blue-600" />,
-      bgColor: 'bg-blue-50',
-    },
-    {
-      title: 'Income',
-      value: `₹${currentMonthOverView?.income.toFixed(2)}`,
-      description: 'All Earnings',
-      icon: <IconMoneybag className="h-6 w-6 text-purple-600" />,
-      bgColor: 'bg-purple-50',
-    },
-    {
-      title: 'Expenses',
-      value: `₹${currentMonthOverView?.expenses.toFixed(2)}`,
-      description: 'All Expenses',
-      icon: <IconCreditCard className="h-6 w-6 text-red-600" />,
-      bgColor: 'bg-red-100',
-    },
-    {
-      title: 'Savings',
-      value: `₹${currentMonthOverView?.savings.toFixed(2)}`,
-      description: 'All Savings',
-      icon: <IconPigMoney className="h-6 w-6 text-orange-600" />,
-      bgColor: 'bg-orange-50',
-    },
-  ];
-
-  const columns = React.useMemo<ColumnDef<TransactionResponse>[]>(
-    () => [
+  // ------------------------------ Table Columns ------------------------------
+  const columns = React.useMemo<ColumnDef<TransactionResponse>[]>(() => {
+    return [
       {
         header: 'Account',
         cell: ({ row }) => (
-          <div>
+          <div className="font-medium text-gray-700">
             {getAccountDetails(row.original.accountId, allAccounts)
               ?.accountName || ''}
           </div>
@@ -88,36 +48,42 @@ function TransactionsPage() {
         accessorKey: 'account',
       },
       {
-        header: 'Transaction Type',
-        cell: (row) => row.renderValue(),
+        header: 'Type',
         accessorKey: 'transactionType',
       },
       {
         header: 'Category',
-        cell: (row) => row.renderValue(),
         accessorKey: 'category',
       },
       {
         header: 'Amount',
-        cell: (row) => row.renderValue(),
         accessorKey: 'amount',
+        cell: (row) => (
+          <span className="font-semibold text-gray-800">
+            ₹{String(row.getValue())}
+          </span>
+        ),
       },
       {
         header: 'Date',
-        cell: ({ row }) => (
-          <div>{getFormattedDate(row.original.createdAt)}</div>
-        ),
         accessorKey: 'createdAt',
+        cell: ({ row }) => (
+          <div className="text-gray-600">
+            {getFormattedDate(row.original.createdAt)}
+          </div>
+        ),
       },
       {
         header: 'Note',
-        cell: (row) => row.renderValue(),
         accessorKey: 'note',
+        cell: (row) => (
+          <span className="text-gray-600">{String(row.getValue())}</span>
+        ),
       },
-    ],
-    [allAccounts],
-  );
+    ];
+  }, [allAccounts]);
 
+  // ------------------------------ Fetch Data ------------------------------
   React.useEffect(() => {
     if (userId) {
       dispatch(fetchTransactionStats(userId));
@@ -125,26 +91,72 @@ function TransactionsPage() {
     }
   }, [dispatch, userId]);
 
-  return (
-    <div>
-      <div className="space-y-6">
-        <StatsCard stats={statsData} loading={statsLoading} />
+  const [periodFilter, setPeriodFilter] = useState<PeriodOption | null>(null);
 
-        <div className="flex justify-end">
-          <Button
-            radius="md"
-            leftSection={<IconPlus className="inline" size={20} />}
-            onClick={open}
-          >
-            Add Transaction
-          </Button>
-        </div>
-        <BasicTable
-          data={allTransactions}
-          columns={columns}
-          isLoading={loading}
+  function applyFilter() {
+    console.log('Filtering using: ', periodFilter);
+  }
+
+  function clearFilter() {
+    setPeriodFilter(null);
+  }
+
+  const handleDownloadCSV = () => {
+    // Implement CSV download logic here
+    console.log('Downloading CSV...');
+  };
+
+  const handleDownloadExcel = () => {
+    // Implement Excel download logic here
+    console.log('Downloading Excel...');
+  };
+
+  const snapshotDummy = {
+    totalTransactions: 312,
+    currentAccountBalance: 245000,
+    otherAccountBalance: 198500,
+    lastTransaction: {
+      type: 'EXPENSE',
+      amount: 450,
+      category: 'Snacks',
+      date: '2025-02-18T10:40:00Z',
+    },
+    mostUsedAccount: 'HDFC Savings',
+  };
+
+  // ------------------------------ Render ------------------------------
+  return (
+    <div className="space-y-10">
+      {/* Page Header */}
+      <PageHeader
+        title="Transactions"
+        subtitle="Monitor your spending, income, and savings effortlessly."
+        buttonLabel="Add Transaction"
+        onButtonClick={open}
+      />
+
+      {/* Stats Section */}
+      <TransactionSnapshotCard snapshot={snapshotDummy} />
+
+      <div className="flex justify-end">
+        <TableActions
+          periodValue={periodFilter}
+          onPeriodChange={setPeriodFilter}
+          onApplyFilter={applyFilter}
+          onClearFilter={clearFilter}
+          onDownloadCSV={handleDownloadCSV}
+          onDownloadExcel={handleDownloadExcel}
         />
       </div>
+
+      {/* Table Section */}
+      <BasicTable
+        data={allTransactions}
+        columns={columns}
+        isLoading={loading}
+      />
+
+      {/* Drawer Form */}
       <Drawer opened={opened} onClose={close} title="Create Transaction">
         <AddTransactionForm />
       </Drawer>

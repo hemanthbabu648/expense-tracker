@@ -15,7 +15,7 @@ import React from 'react';
 // import Drawer from '@/components/commons/Drawer';
 // import CreateAccountForm from '@/containers/bank-accounts/CreateAccountForm';
 import StatsCard from '@/components/cards/StatsCard';
-import BasicTable from '@/components/tables/BaseTable';
+import BasicTable from '@/components/table/BaseTable';
 import { useAppSelector } from '@/redux/hooks';
 import { AccountResponse } from '@/types';
 import { getFormattedDate } from '@/utils/DateUtils';

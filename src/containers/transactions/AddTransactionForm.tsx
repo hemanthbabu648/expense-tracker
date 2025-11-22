@@ -1,8 +1,11 @@
-import { Select } from '@mantine/core';
+import { Button, Select } from '@mantine/core';
 import { DateTimePicker } from '@mantine/dates';
 import { useForm } from '@mantine/form';
 import React, { useState } from 'react';
 
+import NumberInput from '@/components/commons/NumberInput';
+import SegmentedControl from '@/components/commons/SegmentedControl';
+import TextInput from '@/components/commons/TextInput';
 import axiosInstance from '@/lib/axiosInstance';
 import { showErrorToast, showSuccessToast } from '@/lib/reactToasts';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
@@ -13,11 +16,6 @@ import {
 import { useAuthUserId } from '@/redux/slices/UserSlice';
 import { TransactionType, TransactionTypeValue } from '@/types/ui';
 import { getCategories } from '@/utils/Utils';
-
-import Button from '../commons/Button';
-import NumberInput from '../commons/NumberInput';
-import SegmentedControl from '../commons/SegmentedControl';
-import TextInput from '../commons/TextInput';
 
 const tabs: TransactionType[] = [
   {
@@ -187,7 +185,12 @@ const AddTransactionForm = () => {
           {...form.getInputProps('dateAndTime')}
         />
         <div className="mt-4 flex justify-end">
-          <Button type="submit" loading={loading}>
+          <Button
+            variant="filled"
+            color="indigo"
+            type="submit"
+            loading={loading}
+          >
             Submit
           </Button>
         </div>
