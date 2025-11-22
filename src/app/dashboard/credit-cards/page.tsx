@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+// import { useDisclosure } from '@mantine/hooks';
 import {
   IconCreditCard,
   IconMoneybag,
@@ -12,10 +12,10 @@ import {
 import { ColumnDef } from '@tanstack/react-table';
 import React from 'react';
 
-import Drawer from '@/components/commons/Drawer';
-import CreateAccountForm from '@/components/forms/CreateAccountForm';
+// import Drawer from '@/components/commons/Drawer';
+// import CreateAccountForm from '@/containers/bank-accounts/CreateAccountForm';
+import StatsCard from '@/components/cards/StatsCard';
 import BasicTable from '@/components/tables/BaseTable';
-import StatsCard from '@/components/users/StatsCard';
 import { useAppSelector } from '@/redux/hooks';
 import { AccountResponse } from '@/types';
 import { getFormattedDate } from '@/utils/DateUtils';
@@ -24,7 +24,7 @@ function AccountsPage() {
   const { userAccounts, accountStats, loading } = useAppSelector(
     (state) => state.account,
   );
-  const [opened, { open, close }] = useDisclosure(false);
+  // const [opened, { open, close }] = useDisclosure(false);
 
   const statsData = [
     {
@@ -93,16 +93,16 @@ function AccountsPage() {
           <Button
             radius="md"
             leftSection={<IconPlus className="inline" size={20} />}
-            onClick={open}
+            // onClick={open}
           >
             Add Account
           </Button>
         </div>
         <BasicTable data={userAccounts} columns={columns} isLoading={loading} />
       </div>
-      <Drawer opened={opened} onClose={close} title="Create an Account">
+      {/* <Drawer opened={opened} onClose={close} title="Create an Account">
         <CreateAccountForm />
-      </Drawer>
+      </Drawer> */}
     </div>
   );
 }

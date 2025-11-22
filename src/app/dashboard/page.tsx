@@ -9,11 +9,11 @@ import {
 import Link from 'next/link';
 import React from 'react';
 
+import StatsCard from '@/components/cards/StatsCard';
 import RecentTransactions from '@/components/tables/RecentTransactions';
 import AlertsCard from '@/components/users/AlertsCard';
 import BaseCard from '@/components/users/BaseCard';
 import ReportsBillsCard from '@/components/users/ReportsBillsCard';
-import StatsCard from '@/components/users/StatsCard';
 import UpcomingTasksCard from '@/components/users/UpcomingTasksCard';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { fetchAllTransactions } from '@/redux/slices/TransactionSlice';

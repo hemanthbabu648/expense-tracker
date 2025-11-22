@@ -11,11 +11,11 @@ import {
 import { ColumnDef } from '@tanstack/react-table';
 import React from 'react';
 
+import StatsCard from '@/components/cards/StatsCard';
 import Button from '@/components/commons/Button';
 import Drawer from '@/components/commons/Drawer';
 import AddTransactionForm from '@/components/forms/AddTransactionForm';
 import BasicTable from '@/components/tables/BaseTable';
-import StatsCard from '@/components/users/StatsCard';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import {
   fetchAllTransactions,
