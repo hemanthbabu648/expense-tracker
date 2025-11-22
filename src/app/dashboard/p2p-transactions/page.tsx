@@ -134,7 +134,7 @@ function TransactionsPage() {
           <Button
             radius="md"
             leftSection={<IconPlus className="inline" size={20} />}
-            onClick={open}
+            // onClick={open}
           >
             Add Transaction
           </Button>
