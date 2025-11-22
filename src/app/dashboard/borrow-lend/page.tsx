@@ -16,7 +16,7 @@ import Drawer from '@/components/commons/Drawer';
 import SegmentedControl from '@/components/commons/SegmentedControl';
 import BorrowTransactionForm from '@/components/forms/BorrowTransactionForm';
 import LendTransactionForm from '@/components/forms/LendTransactionForm';
-import BasicTable from '@/components/tables/BaseTable';
+import BasicTable from '@/components/table/BaseTable';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import {
   fetchAllMiscTransactions,

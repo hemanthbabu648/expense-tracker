@@ -1,6 +1,6 @@
 'use client';
 
-import { useDisclosure } from '@mantine/hooks';
+// import { useDisclosure } from '@mantine/hooks';
 import {
   IconCreditCard,
   IconMoneybag,
@@ -13,9 +13,9 @@ import React from 'react';
 
 import StatsCard from '@/components/cards/StatsCard';
 import Button from '@/components/commons/Button';
-import Drawer from '@/components/commons/Drawer';
-import AddTransactionForm from '@/components/forms/AddTransactionForm';
-import BasicTable from '@/components/tables/BaseTable';
+// import Drawer from '@/components/commons/Drawer';
+// import AddTransactionForm from '@/components/forms/AddTransactionForm';
+import BasicTable from '@/components/table/BaseTable';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import {
   fetchAllTransactions,
@@ -42,7 +42,7 @@ function TransactionsPage() {
   );
   const currentMonthOverView = transactionStats?.currentMonthOverView;
 
-  const [opened, { open, close }] = useDisclosure(false);
+  // const [opened, { open, close }] = useDisclosure(false);
 
   const statsData = [
     {
@@ -134,7 +134,7 @@ function TransactionsPage() {
           <Button
             radius="md"
             leftSection={<IconPlus className="inline" size={20} />}
-            onClick={open}
+            // onClick={open}
           >
             Add Transaction
           </Button>
@@ -145,9 +145,9 @@ function TransactionsPage() {
           isLoading={loading}
         />
       </div>
-      <Drawer opened={opened} onClose={close} title="Create Transaction">
+      {/* <Drawer opened={opened} onClose={close} title="Create Transaction">
         <AddTransactionForm />
-      </Drawer>
+      </Drawer> */}
     </div>
   );
 }
