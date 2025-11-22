@@ -21,7 +21,9 @@ export enum AccountTypeEnum {
 
 export type AccountType = {
   label: string;
-  value: AccountTypeEnum;
+  value: AccountTypeEnum | '';
+  disabled?: boolean;
+  selected?: boolean;
 };
 
 export interface Category {

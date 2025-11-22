@@ -27,11 +27,6 @@ const userRoutes = [
     icon: IconWallet,
   },
   {
-    link: '/dashboard/credit-cards',
-    label: 'Credit Cards',
-    icon: IconCreditCard,
-  },
-  {
     link: '/dashboard/transactions',
     label: 'Transactions',
     icon: IconFileDescription,
@@ -40,6 +35,11 @@ const userRoutes = [
     link: '/dashboard/p2p-transactions',
     label: 'P2P Transactions',
     icon: IconExchange,
+  },
+  {
+    link: '/dashboard/credit-cards',
+    label: 'Credit Cards',
+    icon: IconCreditCard,
   },
   {
     link: '/dashboard/emis',

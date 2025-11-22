@@ -181,6 +181,12 @@ export const getCategories = {
 
 export const accountTypes: AccountType[] = [
   {
+    label: 'Select Account Type',
+    value: '',
+    disabled: true,
+    selected: true,
+  },
+  {
     label: 'Current',
     value: AccountTypeEnum.CURRENT,
   },
@@ -189,16 +195,12 @@ export const accountTypes: AccountType[] = [
     value: AccountTypeEnum.SAVINGS,
   },
   {
-    label: 'Cash',
-    value: AccountTypeEnum.CASH,
-  },
-  {
     label: 'Salary',
     value: AccountTypeEnum.SALARY,
   },
   {
-    label: 'Credit Card',
-    value: AccountTypeEnum.CREDIT_CARD,
+    label: 'Cash',
+    value: AccountTypeEnum.CASH,
   },
   {
     label: 'E-Wallet',
@@ -207,10 +209,6 @@ export const accountTypes: AccountType[] = [
   {
     label: 'E-Account',
     value: AccountTypeEnum.E_ACCOUNT,
-  },
-  {
-    label: 'Current/Savings',
-    value: AccountTypeEnum.CURRENT_SAVINGS,
   },
 ];
 
